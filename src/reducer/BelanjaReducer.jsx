@@ -64,6 +64,16 @@ export function BelanjaReducer(state, action) {
       );
       return state;
     }
+    case "SORTING_ITEMS": {
+      const sortItem = [...state].sort((a, b) => {
+        if (action.payload === "nama") {
+          return a.namaItem.localeCompare(b.namaItem);
+        } else if (action.payload === "jumlah") {
+          return a.jumlahItem - b.jumlahItem;
+        }
+      });
+      return sortItem;
+    }
     case "UPDATE_INFO": {
       const updatedInfo = state.map((item) =>
         item.id === action.id ? { ...item, ganti: true } : item
