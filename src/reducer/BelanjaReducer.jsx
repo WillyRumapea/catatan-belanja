@@ -48,11 +48,21 @@ export function BelanjaReducer(state, action) {
       const deletedItem = state.filter((item) => item.id !== action.id);
       return deletedItem;
     }
+    case "DELETE_CHECK_ITEMS": {
+      const deletedCheckItems = state.filter((item) => !item.terbeli);
+      return deletedCheckItems;
+    }
     case "CHECKLIST_ITEM": {
       const checkedItem = state.map((item) =>
         item.id === action.id ? { ...item, terbeli: !item.terbeli } : item
       );
       return checkedItem;
+    }
+    case "FILTER_ITEMS": {
+      action.setFilteredItems(
+        state.filter((item) => item.kategoriItem === action.kategoriItem)
+      );
+      return state;
     }
     case "UPDATE_INFO": {
       const updatedInfo = state.map((item) =>
@@ -72,6 +82,9 @@ export function BelanjaReducer(state, action) {
           : item
       );
       return updatedItem;
+    }
+    case "CLEAR_LIST": {
+      return [];
     }
     default:
       return state;

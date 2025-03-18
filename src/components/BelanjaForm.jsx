@@ -44,7 +44,7 @@ export default function BelanjaForm() {
         <input type="number" value={jumlahItem} onChange={handleJumlahItem} />
         <select value={kategoriItem} onChange={handleKategoriItem}>
           <option value="dapur">dapur</option>
-          <option value="kamar mandi">kamar mandi</option>
+          <option value="kamar_mandi">kamar mandi</option>
           <option value="kamar_tidur">kamar tidur</option>
         </select>
         <button onClick={handleSubmitItem}>tambahkan!</button>

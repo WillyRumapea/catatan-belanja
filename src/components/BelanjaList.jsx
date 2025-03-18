@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { BelanjaContext } from "../reducer/BelanjaContext";
 import BelanjaItem from "./BelanjaItem";
+import BelanjaFooter from "./BelanjaFooter";
 
 export default function BelanjaList() {
   const { items } = useContext(BelanjaContext);
+  const totalTerbeli = items.filter((item) => item.terbeli).length;
+  const totalItem = items.length;
 
   return (
     <div>
@@ -17,6 +20,7 @@ export default function BelanjaList() {
           );
         })}
       </ul>
+      <BelanjaFooter boughtTotal={totalTerbeli} totalItem={totalItem} />
     </div>
   );
 }

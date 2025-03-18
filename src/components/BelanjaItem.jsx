@@ -35,7 +35,8 @@ export default function BelanjaItem({ item }) {
       <p>{item.kategoriItem}</p>
       <input
         type="checkbox"
-        onClick={() => dispatch({ type: "CHECKLIST_ITEM", id: item.id })}
+        onChange={() => dispatch({ type: "CHECKLIST_ITEM", id: item.id })}
+        checked={item.terbeli}
       />
       <BelanjaAction item={item} />
 
