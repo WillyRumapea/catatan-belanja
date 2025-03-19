@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useState } from "react";
 import { BelanjaContext } from "../reducer/BelanjaContext";
+import "../style/components/formSection.css";
 
 export default function BelanjaForm() {
   const [namaItem, setNamaItem] = useState("");
@@ -50,28 +51,47 @@ export default function BelanjaForm() {
   }
 
   return (
-    <div>
+    <div id="section-form">
       <h2>Item Belanja Form</h2>
-      <div>
-        <form>
-          <input type="text" value={namaItem} onChange={handleNamaItem} />
-          <input type="number" value={jumlahItem} onChange={handleJumlahItem} />
-          <select value={kategoriItem} onChange={handleKategoriItem}>
+      <div className="form-box">
+        <form className="form-item">
+          <input
+            type="text"
+            value={namaItem}
+            onChange={handleNamaItem}
+            placeholder="nama item...."
+          />
+          <input
+            type="number"
+            value={jumlahItem}
+            onChange={handleJumlahItem}
+            style={{
+              width: "40px",
+            }}
+          />
+          <select
+            value={kategoriItem}
+            onChange={handleKategoriItem}
+            style={{
+              width: "60px",
+              textAlign: "center",
+            }}
+          >
             <option value="dapur">dapur</option>
             <option value="kamar_mandi">kamar mandi</option>
             <option value="kamar_tidur">kamar tidur</option>
           </select>
           <button onClick={handleSubmitItem}>tambahkan!</button>
         </form>
-        <form>
+        <form className="form-filter">
           <label>
             sort{" "}
             <select value={sortItem} onChange={hanldeSortItem}>
               <option value="jumlah">jumlah</option>
               <option value="nama">nama</option>
             </select>
-            <button onClick={handleSubmitSort}>urutkan</button>
           </label>
+          <button onClick={handleSubmitSort}>urutkan</button>
         </form>
       </div>
     </div>

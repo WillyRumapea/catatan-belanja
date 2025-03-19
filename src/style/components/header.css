@@ -1,0 +1,8 @@
+h1 {
+  text-align: center;
+  border-bottom: 2px solid;
+  width: max-content;
+  margin: auto;
+  text-shadow: 2px 2px 2px #0d0d0d;
+  color: #dede45;
+}
