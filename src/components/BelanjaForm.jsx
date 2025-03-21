@@ -73,7 +73,7 @@ export default function BelanjaForm() {
             value={kategoriItem}
             onChange={handleKategoriItem}
             style={{
-              width: "60px",
+              width: "120px",
               textAlign: "center",
             }}
           >

@@ -1,20 +1,13 @@
-import { useContext } from "react";
-import { BelanjaContext } from "../reducer/BelanjaContext";
+import "../style/components/itemFilteredItem.css";
 
 export default function BelanjaFilteredItem({ filteredItem }) {
-  const { dispatch } = useContext(BelanjaContext);
   return (
-    <div>
+    <div className="item-filtered-box">
       <h2>{filteredItem.namaItem}</h2>
-      <p>{filteredItem.jumlahItem}</p>
-      <p>{filteredItem.kategoriItem}</p>
-      <input
-        type="checkbox"
-        onChange={() =>
-          dispatch({ type: "CHECKLIST_ITEM", id: filteredItem.id })
-        }
-        checked={filteredItem.terbeli}
-      />
+      <div>
+        <p>jumlah: {filteredItem.jumlahItem}</p>
+        <p>kategori: {filteredItem.kategoriItem}</p>
+      </div>
     </div>
   );
 }

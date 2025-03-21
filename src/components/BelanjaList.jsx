@@ -14,7 +14,10 @@ export default function BelanjaList() {
       <ul>
         {items.map((item) => {
           return (
-            <li key={item.id}>
+            <li
+              key={item.id}
+              style={{ marginTop: "12px", listStyleType: "none" }}
+            >
               <BelanjaItem key={item.id} item={item}></BelanjaItem>
             </li>
           );

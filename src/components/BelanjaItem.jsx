@@ -2,6 +2,7 @@ import { useContext } from "react";
 import BelanjaAction from "./BelanjaAction";
 import { useState } from "react";
 import { BelanjaContext } from "../reducer/BelanjaContext";
+import "../style/components/itemList.css";
 
 export default function BelanjaItem({ item }) {
   const { dispatch } = useContext(BelanjaContext);
@@ -29,17 +30,29 @@ export default function BelanjaItem({ item }) {
   }
 
   return (
-    <>
-      <h2>{item.namaItem}</h2>
-      <p>{item.jumlahItem}</p>
-      <p>{item.kategoriItem}</p>
-      <input
-        type="checkbox"
-        onChange={() => dispatch({ type: "CHECKLIST_ITEM", id: item.id })}
-        checked={item.terbeli}
-      />
-      <BelanjaAction item={item} />
-
+    <div
+      className="container-list"
+      style={{ backgroundColor: item.terbeli ? "#808080" : "#fff" }}
+    >
+      <h2 style={{ color: item.terbeli ? "#fff" : "#000" }}>{item.namaItem}</h2>
+      <div className="item-detail">
+        <div className="item-info">
+          <p style={{ color: item.terbeli ? "#fff" : "#000" }}>
+            jumlah: {item.jumlahItem}
+          </p>
+          <p style={{ color: item.terbeli ? "#fff" : "#000" }}>
+            kategori: {item.kategoriItem}
+          </p>
+          <input
+            type="checkbox"
+            onChange={() => dispatch({ type: "CHECKLIST_ITEM", id: item.id })}
+            checked={item.terbeli}
+          />
+        </div>
+        <div className="item-action">
+          <BelanjaAction item={item} />
+        </div>
+      </div>
       {item.ganti && (
         <form>
           <input type="text" onChange={handleNamaBaru} value={namaBaru} />
@@ -51,6 +64,6 @@ export default function BelanjaItem({ item }) {
           <button onClick={handleSubmitNewInfo}>simpan!</button>
         </form>
       )}
-    </>
+    </div>
   );
 }

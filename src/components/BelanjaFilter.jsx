@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { BelanjaContext } from "../reducer/BelanjaContext";
 import { useState } from "react";
 import BelanjaFilteredItem from "./BelanjaFilteredItem";
+import "../style/components/itemFilter.css";
 
 export default function BelanjaFilter() {
   const { dispatch, setFilteredItems, filteredItems } =
@@ -22,7 +23,7 @@ export default function BelanjaFilter() {
   }
 
   return (
-    <div>
+    <div className="item-filter">
       <h2>Filter Barang</h2>
       <form action="">
         <label>
@@ -38,7 +39,7 @@ export default function BelanjaFilter() {
       <div>
         <ul>
           {filteredItems.map((filteredItem) => (
-            <li key={filteredItem.id}>
+            <li key={filteredItem.id} style={{ listStyleType: "none" }}>
               <BelanjaFilteredItem filteredItem={filteredItem} />
             </li>
           ))}
